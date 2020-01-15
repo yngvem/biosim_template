@@ -113,14 +113,14 @@ def test_initial_population():
         island_map="OOOO\nOJSO\nOOOO",
         ini_pop=[
             {
-                "loc": (2, 2),
+                "loc": (1, 1),
                 "pop": [
                     {"species": "Herbivore", "age": 1, "weight": 10.0},
                     {"species": "Carnivore", "age": 1, "weight": 10.0},
                 ],
             },
             {
-                "loc": (2, 3),
+                "loc": (1, 2),
                 "pop": [
                     {"species": "Herbivore", "age": 1, "weight": 10.0},
                     {"species": "Carnivore", "age": 1, "weight": 10.0},
@@ -143,14 +143,14 @@ def test_add_population(plain_sim):
     plain_sim.add_population(
         [
             {
-                "loc": (2, 2),
+                "loc": (1, 1),
                 "pop": [
                     {"species": "Herbivore", "age": 1, "weight": 10.0},
                     {"species": "Carnivore", "age": 1, "weight": 10.0},
                 ],
             },
             {
-                "loc": (2, 3),
+                "loc": (1, 2),
                 "pop": [
                     {"species": "Herbivore", "age": 1, "weight": 10.0},
                     {"species": "Carnivore", "age": 1, "weight": 10.0},
@@ -203,14 +203,14 @@ def test_get_animal_distribution(plain_sim):
     plain_sim.add_population(
         [
             {
-                "loc": (2, 2),
+                "loc": (1, 1),
                 "pop": [
                     {"species": "Herbivore", "age": 1, "weight": 10.0},
                     {"species": "Carnivore", "age": 1, "weight": 10.0},
                 ],
             },
             {
-                "loc": (2, 3),
+                "loc": (1, 2),
                 "pop": [
                     {"species": "Herbivore", "age": 1, "weight": 10.0},
                     {"species": "Herbivore", "age": 1, "weight": 10.0},
@@ -225,10 +225,10 @@ def test_get_animal_distribution(plain_sim):
     assert set(data.columns) == {"Row", "Col", "Herbivore", "Carnivore"}
 
     data.set_index(["Row", "Col"], inplace=True)
-    assert data.loc[(2, 2)].Herbivore == 1
-    assert data.loc[(2, 2)].Carnivore == 1
-    assert data.loc[(2, 3)].Herbivore == 2
-    assert data.loc[(2, 3)].Carnivore == 0
+    assert data.loc[(1, 1)].Herbivore == 1
+    assert data.loc[(1, 1)].Carnivore == 1
+    assert data.loc[(1, 2)].Herbivore == 2
+    assert data.loc[(1, 2)].Carnivore == 0
 
     assert data.Herbivore.sum() == 3
     assert data.Carnivore.sum() == 1
